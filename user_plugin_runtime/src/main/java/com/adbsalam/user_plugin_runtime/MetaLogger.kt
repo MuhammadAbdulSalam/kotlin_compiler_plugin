@@ -7,7 +7,13 @@ object MetaLogger {
      * Called by [io.arrowkt.example.MetaPlugin] during IR transformation
      */
     @Suppress("unused")
-    fun log() {
-        println("MetaLogger.log() invoked")
+    fun modifyHeader() {
+        println("Compiler Plugin - Header - This is start of modified code")
     }
+
+    @Suppress("unused")
+    fun modifyEnd() {
+        println("Compiler Plugin - End - This is end of modified code")
+    }
+
 }

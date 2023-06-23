@@ -36,15 +36,20 @@ fun prependLoggingToBody(pluginContext: IrPluginContext, declaration: IrFunction
         val referenceClass = pluginContext.referenceClass(FqName("com.adbsalam.user_plugin_runtime.MetaLogger"))
             ?: throw NoClassDefFoundError("MetaLogger not found")
 
-        val interceptionCall = referenceClass.getSimpleFunction("log")
+        val header = referenceClass.getSimpleFunction("modifyHeader")
             ?: throw NoClassDefFoundError("MetaLogger.log() not found")
 
-        // Inject logging to function top statement(will be called first)
-        +irCall(interceptionCall).apply {
+        val end = referenceClass.getSimpleFunction("modifyEnd")
+            ?: throw NoClassDefFoundError("MetaLogger.log() not found")
+
+        +irCall(header).apply {
             dispatchReceiver = irGetObject(referenceClass)
         }
 
-        // Apply original statements
         for (statement in declaration.body!!.statements) +statement
+
+        +irCall(end).apply {
+            dispatchReceiver = irGetObject(referenceClass)
+        }
     }
 }

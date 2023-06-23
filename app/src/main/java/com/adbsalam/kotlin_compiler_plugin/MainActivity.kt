@@ -33,10 +33,8 @@ class MainActivity : ComponentActivity() {
 
 @MetaLog
 fun pluginFunction() {
-    val a = "Plugin Function Running"
-    println(a)
+    println("Main Activity - Plugin Function Running")
 }
-
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
