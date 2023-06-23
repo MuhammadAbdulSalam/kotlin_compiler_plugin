@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.adbsalam.kotlin_compiler_plugin.ui.theme.Kotlin_compiler_pluginTheme
+import com.adbsalam.user_plugin_runtime.MetaLog
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,8 +26,17 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+
+        pluginFunction()
     }
 }
+
+@MetaLog
+fun pluginFunction() {
+    val a = "Plugin Function Running"
+    println(a)
+}
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {

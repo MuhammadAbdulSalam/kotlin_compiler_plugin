@@ -1,4 +1,4 @@
-package com.adbsalam.kotlin_compiler_plugin
+package com.adbsalam.user_plugin
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.adbsalam.kotlin_compiler_plugin", appContext.packageName)
+        assertEquals("com.adbsalam.user_plugin.test", appContext.packageName)
     }
 }
