@@ -3,6 +3,7 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
     }
 }
 dependencyResolutionManagement {
@@ -10,7 +11,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
     }
 }
 rootProject.name = "kotlin_compiler_plugin"
 include ':app'
+include ':user_plugin'
+include ':user_plugin_runtime'

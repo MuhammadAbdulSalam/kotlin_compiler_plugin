@@ -32,6 +32,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        freeCompilerArgs += "-Xplugin=${project.rootDir}/user_plugin/build/libs/user_plugin.jar"
     }
     buildFeatures {
         compose true
@@ -46,7 +47,14 @@ android {
     }
 }
 
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile) {
+    compileTask -> compileTask.dependsOn ":user_plugin:assemble"
+}
+
+
 dependencies {
+
+    implementation project(":user_plugin_runtime")
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
